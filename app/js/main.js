@@ -33,14 +33,14 @@ function init() {
     document.body.appendChild( container );
 
     camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 100000 );
-    camera.position.z = 4000;
+    camera.position.z = -10000;
 
     cameraCube = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 100000 );
 
     scene = new THREE.Scene();
     sceneCube = new THREE.Scene();
 
-    var geometry = new THREE.SphereGeometry( 100, 32, 16 );
+    var geometry = new THREE.SphereGeometry( 1000, 4, 4 );
 
     var path = 'img/';
     var format = '.jpg';
@@ -51,15 +51,17 @@ function init() {
     ];
 
     var textureCube = THREE.ImageUtils.loadTextureCube( urls, new THREE.CubeRefractionMapping() );
-    var material = new THREE.MeshBasicMaterial( { color: 0xffffff, envMap: textureCube, refractionRatio: 0.5 } );
 
-    for ( var i = 0; i < 20; i ++ ) {
+    var material = new THREE.MeshBasicMaterial( { color: 0xeeeeee, envMap: textureCube, refractionRatio: 0.99 } );
+
+    for ( var i = 0; i < 12; i ++ ) {
 
         var mesh = new THREE.Mesh( geometry, material );
 
-        mesh.position.x = Math.random() * 1000 - 5000;
-        mesh.position.y = Math.random() * 5000 - 5000;
-        mesh.position.z = 0;
+
+        mesh.position.x = Math.random() * 30000 - 5000;
+        mesh.position.y = Math.random() * 30000 - 5000;
+        mesh.position.z = Math.random() * 30000 - 5000;
 
         mesh.scale.x = mesh.scale.y = mesh.scale.z = Math.random() * 1 + 1;
 
