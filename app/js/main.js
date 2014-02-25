@@ -33,7 +33,7 @@ function init() {
     document.body.appendChild( container );
 
     camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 100000 );
-    camera.position.z = 3200;
+    camera.position.z = 4000;
 
     cameraCube = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 100000 );
 
@@ -42,7 +42,7 @@ function init() {
 
     var geometry = new THREE.SphereGeometry( 100, 32, 16 );
 
-    var path = "img/";
+    var path = 'img/';
     var format = '.jpg';
     var urls = [
         path + 'px' + format, path + 'nx' + format,
@@ -51,17 +51,17 @@ function init() {
     ];
 
     var textureCube = THREE.ImageUtils.loadTextureCube( urls, new THREE.CubeRefractionMapping() );
-    var material = new THREE.MeshBasicMaterial( { color: 0xffffff, envMap: textureCube, refractionRatio: 0.95 } );
+    var material = new THREE.MeshBasicMaterial( { color: 0xeeeeee, envMap: textureCube, refractionRatio: 0.95 } );
 
-    for ( var i = 0; i < 500; i ++ ) {
+    for ( var i = 0; i < 20; i ++ ) {
 
         var mesh = new THREE.Mesh( geometry, material );
 
-        mesh.position.x = Math.random() * 10000 - 5000;
-        mesh.position.y = Math.random() * 10000 - 5000;
-        mesh.position.z = Math.random() * 10000 - 5000;
+        mesh.position.x = Math.random() * 5000 - 5000;
+        mesh.position.y = Math.random() * 5000 - 5000;
+        mesh.position.z = 0;
 
-        mesh.scale.x = mesh.scale.y = mesh.scale.z = Math.random() * 3 + 1;
+        mesh.scale.x = mesh.scale.y = mesh.scale.z = Math.random() * 1 + 1;
 
         scene.add( mesh );
 
@@ -71,8 +71,8 @@ function init() {
 
     // Skybox
 
-    var shader = THREE.ShaderLib[ "cube" ];
-    shader.uniforms[ "tCube" ].value = textureCube;
+    var shader = THREE.ShaderLib.cube;
+    shader.uniforms.tCube.value = textureCube;
 
     var material = new THREE.ShaderMaterial( {
 
@@ -134,14 +134,16 @@ function animate() {
 
 function render() {
 
-    var timer = 0.0001 * Date.now();
+    var timer = 0.001 * Date.now();
+
+
 
     for ( var i = 0, il = spheres.length; i < il; i ++ ) {
 
         var sphere = spheres[ i ];
 
-        sphere.position.x = 5000 * Math.cos( timer + i );
-        sphere.position.y = 5000 * Math.sin( timer + i * 1.1 );
+        sphere.position.x = 2000 * Math.cos( timer + i );
+        sphere.position.y = 2000 * Math.sin( timer + i );
 
     }
 
