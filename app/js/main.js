@@ -69,20 +69,20 @@ function init() {
 
     }
 
-//     // Skybox
+    // Skybox
 
-//     var shader = THREE.ShaderLib[ "cube" ];
-//     shader.uniforms[ "tCube" ].value = textureCube;
+    var shader = THREE.ShaderLib[ "cube" ];
+    shader.uniforms[ "tCube" ].value = textureCube;
 
-//     var material = new THREE.ShaderMaterial( {
+    var material = new THREE.ShaderMaterial( {
 
-//         fragmentShader: shader.fragmentShader,
-//         vertexShader: shader.vertexShader,
-//         uniforms: shader.uniforms,
-//         depthWrite: false,
-//         side: THREE.BackSide
+        fragmentShader: shader.fragmentShader,
+        vertexShader: shader.vertexShader,
+        uniforms: shader.uniforms,
+        depthWrite: false,
+        side: THREE.BackSide
 
-//     } ),
+    } ),
 
     mesh = new THREE.Mesh( new THREE.BoxGeometry( 100, 100, 100 ), material );
     sceneCube.add( mesh );
@@ -96,29 +96,29 @@ function init() {
 
 //     //
 
-//     window.addEventListener( 'resize', onWindowResize, false );
+    window.addEventListener( 'resize', onWindowResize, false );
 
 }
 
 function onWindowResize() {
 
-//     windowHalfX = window.innerWidth / 2,
-//     windowHalfY = window.innerHeight / 2,
+    windowHalfX = window.innerWidth / 2,
+    windowHalfY = window.innerHeight / 2,
 
-//     camera.aspect = window.innerWidth / window.innerHeight;
-//     camera.updateProjectionMatrix();
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
 
-//     cameraCube.aspect = window.innerWidth / window.innerHeight;
-//     cameraCube.updateProjectionMatrix();
+    cameraCube.aspect = window.innerWidth / window.innerHeight;
+    cameraCube.updateProjectionMatrix();
 
-//     renderer.setSize( window.innerWidth, window.innerHeight );
+    renderer.setSize( window.innerWidth, window.innerHeight );
 
 }
 
 function onDocumentMouseMove(event) {
 
-//     mouseX = ( event.clientX - windowHalfX ) * 10;
-//     mouseY = ( event.clientY - windowHalfY ) * 10;
+    mouseX = ( event.clientX - windowHalfX ) * 10;
+    mouseY = ( event.clientY - windowHalfY ) * 10;
 
 }
 
