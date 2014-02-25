@@ -51,13 +51,13 @@ function init() {
     ];
 
     var textureCube = THREE.ImageUtils.loadTextureCube( urls, new THREE.CubeRefractionMapping() );
-    var material = new THREE.MeshBasicMaterial( { color: 0xeeeeee, envMap: textureCube, refractionRatio: 0.95 } );
+    var material = new THREE.MeshBasicMaterial( { color: 0xffffff, envMap: textureCube, refractionRatio: 0.5 } );
 
     for ( var i = 0; i < 20; i ++ ) {
 
         var mesh = new THREE.Mesh( geometry, material );
 
-        mesh.position.x = Math.random() * 5000 - 5000;
+        mesh.position.x = Math.random() * 1000 - 5000;
         mesh.position.y = Math.random() * 5000 - 5000;
         mesh.position.z = 0;
 
