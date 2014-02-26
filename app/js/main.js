@@ -43,7 +43,7 @@ function init() {
 
 
     // lights
-    
+
     hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.6 );
     hemiLight.color.setHSL( 0.6, 1, 0.6 );
     hemiLight.groundColor.setHSL( 0.095, 1, 0.75 );
@@ -75,7 +75,7 @@ function init() {
 
         mesh.position.x = Math.random() * 8000 - 5000;
         mesh.position.y = Math.random() * 8000 - 5000;
-        mesh.position.z = Math.random() * 80000 - 5000;
+        mesh.position.z = Math.random() * 8000 - 5000;
 
         mesh.scale.x = mesh.scale.y = mesh.scale.z = Math.random() * 1 + 1;
 
@@ -116,7 +116,7 @@ function init() {
 
 
 
-
+    //LOAD THE OBJECT TO THE SCENE
     var loader = new THREE.JSONLoader(); // init the loader util
 
     // init loading
@@ -190,7 +190,10 @@ function render() {
     //     sphere.position.z = 5000 * Math.sin( timer + i );
 
     // }
+
     phone.position.y = 1000 * Math.cos(timer);
+    phone.rotation.y += .01;
+    phone.rotation.x += .01;
 
     camera.position.x += ( mouseX - camera.position.x ) * .05;
     camera.position.y += ( - mouseY - camera.position.y ) * .05;
