@@ -5,8 +5,7 @@
             "clean": true
         },
         "files": {
-            "three.js": "threejs/build/three.js",
-            "require.js": "requirejs/require.js"
+            "three.min.js": "threejs/build/three.min.js"
         }
     }
 }

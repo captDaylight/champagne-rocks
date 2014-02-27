@@ -471,8 +471,12 @@ THREE.NURBSUtils = {
 var camera, scene, renderer;
 var geometry, material, mesh, group;
 
+
+
 init();
 animate();
+
+document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 
 var xPos = 0;
 
@@ -584,7 +588,12 @@ function addShape( shape, color, x, y, z, rx, ry, rz, s ) {
 }
 
 var xPos = 0;
-var radius = 150;
+var radius = 200;
+var rotation = 0;
+
+var mouseX = 0;
+var mouseY = 0;
+
 function animate() {
     var timer = 0.01 * Date.now();
     // xPos += 1;
@@ -601,22 +610,23 @@ function animate() {
     function rgbToHex(r, g, b) {
         return componentToHex(r) + componentToHex(g) + componentToHex(b);
     }
-// var circleRadius = 100 + (Math.cos(timer) * 20);
+
+    // var circleRadius = 100 + (Math.cos(timer) * 20);
 
     var material = new THREE.MeshBasicMaterial({
-        color: new THREE.Color( Math.cos(timer), -Math.cos(timer), 0 )
+        color: new THREE.Color( Math.cos(timer), Math.sin(timer), -Math.sin(timer) )
     });
 
-
-    
-    var segments = 30;
-
+    var segments = 3;
 
     var circleGeometry = new THREE.CircleGeometry( radius + (Math.cos(timer) * 20), segments );              
     var circle = new THREE.Mesh( circleGeometry, material );
 
-    circle.position.x = xPos*2;
+    circle.position.x = mouseX;
+    circle.position.y = mouseY;
     circle.position.z = xPos*10;
+    circle.rotation.z = rotation;
+    rotation += .01;
     xPos += 1;
     scene.add( circle );
 
@@ -631,4 +641,21 @@ function animate() {
     camera.position.z += 10;
 }
 
+var windowHalfX = window.innerWidth / 2;
+var windowHalfY = window.innerHeight / 2;
+
+function onDocumentMouseMove(event) {
+    
+    mouseX = ( event.clientX - windowHalfX );
+
+    // console.log(mouseX);
+
+    mouseY = - ( event.clientY - windowHalfY );
+
+}
+
+
 });
+
+
+
